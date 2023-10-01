@@ -1,7 +1,7 @@
+import FileUpload from '@/components/ui/FileUpload'
 import { Button } from '@/components/ui/button'
 import { UserButton, auth } from '@clerk/nextjs/app-beta'
-import { ArrowRight, LogIn, Upload, BadgeSwissFranc } from 'lucide-react'
-import Image from 'next/image'
+import { ArrowRight, LogIn, BadgeSwissFranc } from 'lucide-react'
 import Link from 'next/link'
 
 export default async function Home() {
@@ -38,10 +38,7 @@ export default async function Home() {
           </p>
           <div className="w-full mt-4">
             {isAuth ? (
-              <Button>
-                File Upload
-                <Upload className="w-4 h-4 ml-2" />
-              </Button>
+              <FileUpload />
             ) : (
               <Link href="/sign-in">
                 <Button>
