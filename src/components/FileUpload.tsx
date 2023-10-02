@@ -25,46 +25,43 @@ export default function FileUpload() {
 		<div className="p-2 bg-white rounded-xl">
 			<div className="border-dashed border-2 rounded-xl cursor-pointer bg-gray-50 py-8 flex justify-center items-center flex-col" >
 				<div>
-					{
-						isLoading || Loading ?
-							(
-								<div>
-									<>
-										{/* loading state */}
-										<Loader2 className="h-10 w-10 text-blue-500 animate-spin" />
-										<p className="mt-2 text-sm text-slate-400">
-											Spilling Tea to GPT...
-										</p>
-									</>
-								</div>
-							) : (
-								<UploadButton className='w-full h-24 mt-2 text-sm text-slate-400'
-									endpoint="pdfUploader"
-									onClientUploadComplete={(res) => {
-										setLoading(true);
-										// Do something with the response
-										const file_name = res?.[0].name as string;
-										const file_url = res?.[0].url as string;
+					{isLoading || Loading ?
+						(
+							<div>
+								<Loader2 className="h-10 w-10 text-blue-500 animate-spin" />
+								<p className="mt-2 text-sm text-slate-400">
+									Spilling Tea to GPT...
+								</p>
+							</div>
+						)
+						:
+						(
+							<UploadButton className='w-full h-24 mt-2 text-sm text-slate-400'
+								endpoint="pdfUploader"
+								onClientUploadComplete={(res) => {
+									setLoading(true);
+									// Do something with the response
+									const file_name = res?.[0].name as string;
+									const file_url = res?.[0].url as string;
 
-										mutate({ file_name, file_url }, {
-											onSuccess: () => {
-												setLoading(false);
-												toast.success("successfully Data sent");
-											},
-											onError: (error) => {
-												toast.error("Data post failed")
-											},
-										});
-									}}
-									onUploadError={(error: Error) => {
-										// Do something with the error.
-										toast.error(`ERROR! ${error.message}`);
-									}}
-								/>
-							)
+									mutate({ file_name, file_url }, {
+										onSuccess: () => {
+											setLoading(false);
+											toast.success("successfully Data sent");
+										},
+										onError: (error) => {
+											toast.error("Data post failed")
+										},
+									});
+								}}
+								onUploadError={(error: Error) => {
+									// Do something with the error.
+									toast.error(`ERROR! ${error.message}`);
+								}}
+							/>
+						)
 					}
 				</div>
-
 			</div>
 		</div>
 	)
