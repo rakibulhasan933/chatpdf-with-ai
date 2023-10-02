@@ -9,7 +9,6 @@ import { Loader2 } from 'lucide-react';
 
 export default function FileUpload() {
 	const [Loading, setLoading] = useState<Boolean>(false);
-	console.log({ Loading });
 	// Sent Data backend
 	const { mutate, isLoading } = useMutation({
 		mutationFn: async ({ file_url, file_name }: { file_url: string, file_name: string }) => {
