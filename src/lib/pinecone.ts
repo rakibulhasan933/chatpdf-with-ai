@@ -5,6 +5,8 @@ import {
 	Document,
 	RecursiveCharacterTextSplitter,
 } from "@pinecone-database/doc-splitter";
+import { getEmbeddings } from "./Embedding";
+import md5 from "md5"
 
 type PDFPage = {
 	pageContent: string;
@@ -29,9 +31,29 @@ export async function loadIntoPinecone({ file_url }: { file_url: string }) {
 
 	// 2. split and segment the pdf
 	const documents = await Promise.all(pages.map(prepareDocument));
+
+	// 3. vectorise and embed individual documents
+	const vectors = await Promise.all(documents.flat().map(embedDocument));
+
 };
 
-
+// 3.
+async function embedDocument(doc: Document) {
+	try {
+		const embeddings = await getEmbeddings(doc.pageContent);
+		const hash = md5(doc.pageContent);
+		return {
+			id: hash,
+			values: embeddings,
+			metadata: {
+				text: doc.metadata?.text,
+				pageNumber: doc.metadata?.pageNumber,
+			}
+		} as PineconeRecord;
+	} catch (error) {
+		console.log("embedding error");
+	};
+};
 
 
 // 2.
