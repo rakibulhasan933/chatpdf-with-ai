@@ -9,7 +9,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
 		console.log({ pages });
 
 		// console.log({ file_url, file_name });
-		return NextResponse.json({ message: "successfully" });
+		return NextResponse.json({ message: "successfully", pages });
 	} catch (error) {
 		return NextResponse.json({ error: "Server Error 500" });
 	};

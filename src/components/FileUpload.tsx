@@ -45,11 +45,13 @@ export default function FileUpload() {
 									const file_url = res?.[0].url as string;
 
 									mutate({ file_name, file_url }, {
-										onSuccess: () => {
+										onSuccess: (data) => {
 											setLoading(false);
 											toast.success("successfully Data sent");
+											console.log({ data });
 										},
 										onError: (error) => {
+											console.log(error)
 											toast.error("Data post failed")
 										},
 									});
