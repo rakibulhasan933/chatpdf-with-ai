@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "set NODE_OPTIONS='--max-old-space-size=8192' && next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -24,6 +24,11 @@
     "dotenv": "^16.3.1",
     "drizzle-orm": "^0.28.6",
     "lucide-react": "^0.279.0",
+    "md5": "^2.3.0",
+    "langchain": "^0.0.150",
+    "openai-edge": "^1.2.2",
+    "pdf-parse": "^1.1.1",
+    "pdfjs-dist": "^3.10.111",
     "next": "latest",
     "pg": "^8.11.3",
     "react": "latest",
@@ -38,6 +43,7 @@
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
+    "@types/md5": "^2.3.2",
     "autoprefixer": "latest",
     "drizzle-kit": "^0.19.13",
     "eslint": "latest",
