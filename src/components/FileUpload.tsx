@@ -11,10 +11,11 @@ export default function FileUpload() {
 	const [Loading, setLoading] = useState<Boolean>(false);
 	// Sent Data backend
 	const { mutate, isLoading } = useMutation({
-		mutationFn: async ({ file_url, file_name }: { file_url: string, file_name: string }) => {
+		mutationFn: async ({ file_url, file_name, file_key }: { file_url: string, file_name: string, file_key: string }) => {
 			const response = await axios.post("/api/create-chat", {
 				file_url,
-				file_name
+				file_name,
+				file_key,
 			});
 			return response.data;
 		},
@@ -40,15 +41,16 @@ export default function FileUpload() {
 								endpoint="pdfUploader"
 								onClientUploadComplete={(res) => {
 									setLoading(true);
+									console.log(res, "response");
 									// Do something with the response
 									const file_name = res?.[0].name as string;
 									const file_url = res?.[0].url as string;
+									const file_key = res?.[0].key as string;
 
-									mutate({ file_name, file_url }, {
+									mutate({ file_name, file_url, file_key }, {
 										onSuccess: (data) => {
 											setLoading(false);
 											toast.success("successfully Data sent");
-											console.log({ data });
 										},
 										onError: (error) => {
 											console.log(error)
