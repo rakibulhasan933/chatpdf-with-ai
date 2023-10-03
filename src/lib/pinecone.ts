@@ -7,6 +7,7 @@ import {
 } from "@pinecone-database/doc-splitter";
 import { getEmbeddings } from "./Embedding";
 import md5 from "md5"
+import { convertToAscii } from "./utils";
 
 type PDFPage = {
 	pageContent: string;
@@ -33,8 +34,20 @@ export async function loadIntoPinecone({ file_url }: { file_url: string }) {
 	const documents = await Promise.all(pages.map(prepareDocument));
 
 	// 3. vectorise and embed individual documents
-	const vectors = await Promise.all(documents.flat().map(embedDocument));
+	const vectors = await Promise.all(documents.flat().map(embedDocument)) as PineconeRecord[];
 
+	// 4. upload to pinecone
+	const client = await getPineconeClient();
+
+	const pineconeIndex = await client.index("chatpdf");
+
+	const nameSpace = pineconeIndex.namespace(convertToAscii(file_url));
+
+	console.log("inserting vectors into pinecone");
+
+	await nameSpace.upsert(vectors);
+
+	return documents[0];
 };
 
 // 3.
