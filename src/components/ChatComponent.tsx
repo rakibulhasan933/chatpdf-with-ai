@@ -10,7 +10,9 @@ type Props = { chatId: number };
 
 export default function ChatComponent({ chatId }: Props) {
 
-	const { input, handleInputChange, handleSubmit, messages } = useChat()
+	const { input, handleInputChange, handleSubmit, messages } = useChat({
+		api: "/api/chat",
+	});
 
 	return (
 		<div
