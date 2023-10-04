@@ -14,7 +14,7 @@ export default function ChatComponent({ chatId }: Props) {
 
 	return (
 		<div
-			className="relative max-h-screen overflow-scroll"
+			className="relative max-h-screen overflow-x-hidden overflow-scroll"
 			id="message-container"
 		>
 			<div className="sticky top-0 inset-x-0 p-2 bg-white h-fit">
