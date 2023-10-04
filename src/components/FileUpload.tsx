@@ -6,8 +6,10 @@ import toast from 'react-hot-toast';
 import { UploadButton } from '@/lib/uploadthing';
 import "@uploadthing/react/styles.css";
 import { Loader2 } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export default function FileUpload() {
+	const router = useRouter();
 	const [Loading, setLoading] = useState<Boolean>(false);
 	// Sent Data backend
 	const { mutate, isLoading } = useMutation({
@@ -48,9 +50,10 @@ export default function FileUpload() {
 									const file_key = res?.[0].key as string;
 
 									mutate({ file_name, file_url, file_key }, {
-										onSuccess: (data) => {
+										onSuccess: ({ chat_id }: { chat_id: number }) => {
 											setLoading(false);
 											toast.success("successfully Data sent");
+											router.push(`/chat/${chat_id}`);
 										},
 										onError: (error) => {
 											console.log(error)
