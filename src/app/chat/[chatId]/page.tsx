@@ -6,6 +6,7 @@ import { chats } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 import PDFViewer from '@/components/PDFViewer';
 import ChatSideBar from '@/components/ChatSideBar';
+import ChatComponent from '@/components/ChatComponent';
 
 interface ParamsIProps {
 	params: IDIProps
@@ -46,7 +47,7 @@ export default async function ChatID({ params }: ParamsIProps) {
 				</div>
 				{/* chat component */}
 				<div className="flex-[3] border-l-4 border-l-slate-200">
-					{/* <ChatComponent chatId={parseInt(chatId)} /> */}
+					<ChatComponent chatId={parseInt(chatId)} />
 				</div>
 			</div>
 		</div>
