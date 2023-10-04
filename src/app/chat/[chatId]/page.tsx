@@ -5,6 +5,7 @@ import { db } from '@/lib/db';
 import { chats } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 import ChatSideBar from '@/components/ChatSideBar';
+import PDFViewer from '@/components/PDFViewer';
 
 interface ParamsIProps {
 	params: IDIProps
@@ -33,19 +34,23 @@ export default async function ChatID({ params }: ParamsIProps) {
 	const currentChat = _chats.find((chat) => chat.id === parseInt(chatId));
 
 	return (
-		<div className="flex max-h-screen overflow-scroll">
-			<div className="flex w-full max-h-screen overflow-scroll">
-				<div className="flex-[1] max-w-xs">
-					{/* Chat SideBar */}
-					<ChatSideBar />
+		<div className="flex h-screen overflow-scroll mx-4">
+			<div className="flex w-full h-screen overflow-scroll">
+				{/* chat sidebar */}
+				<div className="basis-1/5">
+					<div className="w-full">
+						<h2>Menu Bar</h2>
+					</div>
+
 				</div>
-				<div className="max-h-screen p-4 oveflow-scroll flex-[5]">
-					{/* PDF Viewer */}
-					<h2>PDF Viewers</h2>
+				{/* pdf viewer */}
+				<div className="max-h-screen oveflow-scroll basis-2/5">
+					<PDFViewer pdf_url={currentChat?.pdfUrl || ""} />
 				</div>
-				<div className="flex-[3] border-l-4 border-l-slate-200">
+				{/* chat component */}
+				<div className="basis-2/5 border-l-slate-200">
 					{/* Chat Components */}
-					<h2>Chat Components</h2>
+					<ChatSideBar />
 				</div>
 			</div>
 		</div>

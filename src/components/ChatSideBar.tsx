@@ -7,7 +7,7 @@ import { Input } from './ui/input';
 export default function ChatSideBar() {
 	return (
 		<div
-			className="relative max-h-screen overflow-scroll"
+			className="relative w-full h-screen overflow-scroll overflow-x-hidden"
 			id="message-container"
 		>
 			<div className="sticky top-0 inset-x-0 p-2 bg-white h-fit">
