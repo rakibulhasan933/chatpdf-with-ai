@@ -17,5 +17,5 @@ export async function getEmbeddings(text: string) {
 	} catch (error) {
 		console.log("error calling openai embeddings api", error);
 		throw error;
-	}
-}
+	};
+};

@@ -26,12 +26,12 @@ export default async function ChatID({ params }: ParamsIProps) {
 
 	const _chats = await db.select().from(chats).where(eq(chats.userId, userId));
 
-	if (!_chats) {
-		return redirect("/");
-	};
-	if (_chats.find((chat) => chat.id !== parseInt(chatId))) {
-		return redirect("/");
-	}
+	// if (!_chats) {
+	// 	return redirect("/");
+	// };
+	// if (_chats.find((chat) => chat.id !== parseInt(chatId))) {
+	// 	return redirect("/");
+	// }
 	const currentChat = _chats.find((chat) => chat.id === parseInt(chatId));
 
 	return (
