@@ -22,6 +22,18 @@ export const message = pgTable("messages", {
 	createAt: timestamp("createAt").notNull().defaultNow(),
 	role: userSystemEnum("role").notNull(),
 });
+export type DrizzleMessage = typeof message.$inferSelect;
+
+export const userSubscriptions = pgTable("user_subscriptions", {
+	id: serial("id").primaryKey(),
+	userId: varchar("user_id", { length: 256 }).notNull().unique(),
+	stripeSubscriptionId: varchar("stripe_subscription_id", { length: 256 }).unique(),
+	stripeCustomerId: varchar("stripe_customer_id", { length: 256 }).unique(),
+	stripePriceId: varchar("stripe_price_id", { length: 256 }),
+	stripeCurrentPeriodEnd: timestamp("stripe_current_period_end_at"),
+});
+
+export type DrizzleUserSubscriptions = typeof userSubscriptions.$inferSelect;
 
 // drizzle orm
 // drizzle kit
