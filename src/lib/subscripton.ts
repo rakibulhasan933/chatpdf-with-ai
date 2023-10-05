@@ -5,7 +5,7 @@ import { eq } from "drizzle-orm";
 
 const DAY_IN_MS = 1000 * 60 * 60 * 24;
 
-export const subscription = async () => {
+export const checkSubscription = async () => {
 	const { userId } = await auth();
 	if (!userId) {
 		return false;
