@@ -21,7 +21,6 @@ export async function POST(request: NextRequest, response: NextResponse) {
 		}).returning({
 			insertedId: chats.id,
 		});
-		console.log({ chat_id });
 		return NextResponse.json(
 			{
 				chat_id: chat_id[0].insertedId,

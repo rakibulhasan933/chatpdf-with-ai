@@ -1,4 +1,5 @@
 import FileUpload from '@/components/FileUpload'
+import SubscriptionButton from '@/components/SubscriptionButton'
 import { Button } from '@/components/ui/button'
 import { db } from '@/lib/db'
 import { chats } from '@/lib/db/schema'
@@ -20,7 +21,6 @@ export default async function Home() {
       firstChat = firstChat[0];
     };
   };
-
   return (
     <main className="w-screen min-h-screen bg-gradient-to-r from-rose-100 to-teal-100">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -30,19 +30,17 @@ export default async function Home() {
             <UserButton afterSignOutUrl="/" />
           </div>
           <div className="flex mt-2">
-            {isAuth && (
-              <div className=' flex flex-row gap-x-4 items-center'>
-                <Link href="/">
+            {isAuth && firstChat && (
+              <>
+                <Link href={`/chat/${firstChat.id}`}>
                   <Button>
                     Go to Chats <ArrowRight className="ml-2" />
                   </Button>
                 </Link>
                 <div className="ml-3">
-                  <Button className=' bg-gray-300 text-black hover:text-white font-bold'>SubscriptionButton
-                    <BadgeSwissFranc className=' w-4 h-4 ml-3' />
-                  </Button>
+                  <SubscriptionButton isPro={isPro} />
                 </div>
-              </div>
+              </>
             )}
           </div>
           <div>

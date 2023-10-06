@@ -43,7 +43,6 @@ export default function FileUpload() {
 								endpoint="pdfUploader"
 								onClientUploadComplete={(res) => {
 									setLoading(true);
-									console.log(res, "response");
 									// Do something with the response
 									const file_name = res?.[0].name as string;
 									const file_url = res?.[0].url as string;

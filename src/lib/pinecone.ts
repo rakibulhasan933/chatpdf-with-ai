@@ -37,7 +37,7 @@ export async function loadIntoPinecone({ file_url }: { file_url: string }) {
 	// 3. vectors and embed individual documents
 	const vectors = await Promise.all(documents.flat().map(embedDocument));
 
-	console.log({ vectors });
+	// console.log({ vectors });
 
 	// 4. upload to pinecone
 	const client = await getPineconeClient();
