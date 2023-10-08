@@ -2,13 +2,12 @@
 import { DrizzleChat } from "@/lib/db/schema";
 import Link from "next/link";
 import React from "react";
-import { Button, buttonVariants } from "./ui/button";
-import { MessageCircle, PlusCircle, Zap } from "lucide-react";
+import { Button } from "./ui/button";
+import { MessageCircle, PlusCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
-import axios from "axios";
-import { Card, CardContent } from "./ui/card";
 import { Progress } from "./ui/progress";
 import SubscriptionButton from "./SubscriptionButton";
+import { ScrollArea } from "./ui/scroll-area";
 
 type Props = {
 	chats: DrizzleChat[];
@@ -31,7 +30,7 @@ const ChatSideBar = ({ chats, chatId, limit, isPro }: Props) => {
 					</Button>
 				</Link>
 			</div>
-			<div className="flex overscroll-auto pb-20 flex-col gap-2 mt-4">
+			<ScrollArea className="flex overscroll-auto pb-20 flex-col gap-2 mt-4">
 				{chats?.map((chat) => (
 					<Link key={chat.id} href={`/chat/${chat.id}`}>
 						<div
@@ -47,7 +46,7 @@ const ChatSideBar = ({ chats, chatId, limit, isPro }: Props) => {
 						</div>
 					</Link>
 				))}
-			</div>
+			</ScrollArea>
 			<div className="absolute  bottom-4 left-16 py-3 px-2  justify-center  bg-purple-400 rounded">
 				<div className="w-full px-4">
 					<Progress className="mb-1 bg-white" value={(limit / fullLimit) * 100} />
