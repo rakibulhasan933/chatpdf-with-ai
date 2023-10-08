@@ -2,7 +2,7 @@ import React from 'react'
 import { auth } from "@clerk/nextjs";
 import { redirect } from 'next/navigation';
 import { db } from '@/lib/db';
-import { chats } from '@/lib/db/schema';
+import { chats, userApiLimit } from '@/lib/db/schema';
 import { eq } from 'drizzle-orm';
 import PDFViewer from '@/components/PDFViewer';
 import ChatSideBar from '@/components/ChatSideBar';
@@ -34,12 +34,17 @@ export default async function ChatID({ params }: ParamsIProps) {
 	// }
 	const currentChat = _chats.find((chat) => chat.id === parseInt(chatId));
 
+	const _limit = await db.select().from(userApiLimit).where(eq(userApiLimit.userId, userId));
+
+	const limit = _limit?.length;
+
+
 	return (
 		<div className="flex h-screen overflow-hidden">
 			<div className="flex w-full h-screen">
 				{/* chat sidebar */}
 				<div className=" basis-1/5">
-					<ChatSideBar chats={_chats} chatId={parseInt(chatId)} />
+					<ChatSideBar chats={_chats} limit={limit} chatId={parseInt(chatId)} />
 				</div>
 				{/* pdf viewer */}
 				<div className="basis-2/5">

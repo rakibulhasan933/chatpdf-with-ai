@@ -50,7 +50,7 @@ export default async function Home() {
             </p>
           </div>
           <div className="w-full mt-4">
-            {isAuth && isPro ? (
+            {isAuth ? (
               <FileUpload />
             ) : (
               <Link href="/sign-in">
