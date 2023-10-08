@@ -1,4 +1,4 @@
-import { integer, pgEnum, pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import { integer, numeric, pgEnum, pgTable, serial, text, timestamp, varchar } from "drizzle-orm/pg-core";
 
 
 
@@ -34,6 +34,14 @@ export const userSubscriptions = pgTable("user_subscriptions", {
 });
 
 export type DrizzleUserSubscriptions = typeof userSubscriptions.$inferSelect;
+
+export const userApiLimit = pgTable("user_api_limit", {
+	id: serial("id").primaryKey(),
+	userId: varchar("user_id", { length: 256 }).notNull().unique(),
+	token: numeric("token").notNull(),
+});
+
+export type DrizzleUserApiLimit = typeof userApiLimit.$inferSelect;
 
 // drizzle orm
 // drizzle kit
