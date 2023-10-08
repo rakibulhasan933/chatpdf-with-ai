@@ -2,6 +2,7 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { Button } from './ui/button';
+import { Zap } from 'lucide-react';
 
 export default function SubscriptionButton({ isPro }: { isPro: boolean }) {
 	const [loading, setLoading] = useState(false);
@@ -18,7 +19,7 @@ export default function SubscriptionButton({ isPro }: { isPro: boolean }) {
 	};
 	return (
 		<Button disabled={loading} onClick={handleSubscription}>
-			{isPro ? "Manage Subscriptions" : "Get Pro"}
+			{isPro ? "Manage Subscriptions" : " Upgrade"} <Zap className="w-4 h-4 ml-2 fill-white" />
 		</Button>
 	)
 }

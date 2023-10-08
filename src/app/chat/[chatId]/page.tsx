@@ -7,6 +7,7 @@ import { eq } from 'drizzle-orm';
 import PDFViewer from '@/components/PDFViewer';
 import ChatSideBar from '@/components/ChatSideBar';
 import ChatComponent from '@/components/ChatComponent';
+import { checkSubscription } from '@/lib/subscripton';
 
 interface ParamsIProps {
 	params: IDIProps
@@ -23,7 +24,7 @@ export default async function ChatID({ params }: ParamsIProps) {
 		return redirect("/sign-in");
 	};
 
-
+	const isPro = await checkSubscription();
 	const _chats = await db.select().from(chats).where(eq(chats.userId, userId));
 
 	// if (!_chats) {
@@ -44,7 +45,7 @@ export default async function ChatID({ params }: ParamsIProps) {
 			<div className="flex w-full h-screen">
 				{/* chat sidebar */}
 				<div className=" basis-1/5">
-					<ChatSideBar chats={_chats} limit={limit} chatId={parseInt(chatId)} />
+					<ChatSideBar isPro={isPro} chats={_chats} limit={limit} chatId={parseInt(chatId)} />
 				</div>
 				{/* pdf viewer */}
 				<div className="basis-2/5">

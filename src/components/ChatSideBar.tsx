@@ -8,14 +8,16 @@ import { cn } from "@/lib/utils";
 import axios from "axios";
 import { Card, CardContent } from "./ui/card";
 import { Progress } from "./ui/progress";
+import SubscriptionButton from "./SubscriptionButton";
 
 type Props = {
 	chats: DrizzleChat[];
 	chatId: number;
 	limit: number,
+	isPro: boolean,
 };
 
-const ChatSideBar = ({ chats, chatId, limit }: Props) => {
+const ChatSideBar = ({ chats, chatId, limit, isPro }: Props) => {
 	const [loading, setLoading] = React.useState(false);
 	const fullLimit = 4;
 
@@ -46,17 +48,11 @@ const ChatSideBar = ({ chats, chatId, limit }: Props) => {
 					</Link>
 				))}
 			</div>
-			<div className="absolute  bottom-4 left-16 py-3 px-2  justify-center  bg-purple-400 rounded-lg">
+			<div className="absolute  bottom-4 left-16 py-3 px-2  justify-center  bg-purple-400 rounded">
 				<div className="w-full px-4">
-					<Progress className="mb-2" value={(limit / fullLimit) * 100} />
+					<Progress className="mb-1 bg-white" value={(limit / fullLimit) * 100} />
 					<p className=" text-sm font-medium mb-2 text-black">{limit}/{fullLimit} Free Generations</p>
-
-					<Link href='/'>
-						<Button className=" bg-slate-500" variant="outline">
-							Upgrade
-							<Zap className="w-4 h-4 ml-2 fill-white" />
-						</Button>
-					</Link>
+					<SubscriptionButton isPro={isPro} />
 				</div>
 			</div>
 		</div>
