@@ -3,6 +3,7 @@ import { loadIntoPinecone } from "@/lib/pinecone";
 import { getAuth } from "@clerk/nextjs/server";
 import { db } from "@/lib/db";
 import { chats } from "@/lib/db/schema";
+import { FreeLimit } from "@/lib/userLimit";
 
 export async function POST(request: NextRequest, response: NextResponse) {
 	const { userId } = await getAuth(request);
@@ -12,6 +13,12 @@ export async function POST(request: NextRequest, response: NextResponse) {
 	try {
 		const body = await request.json();
 		const { file_url, file_name, file_key } = body;
+		// Verify
+		const limit = await FreeLimit();
+		if (limit === false) {
+
+			return NextResponse.json({ message: "Free trail End" }, { status: 429 });
+		}
 		await loadIntoPinecone({ file_url });
 		const chat_id = await db.insert(chats).values({
 			fileKey: file_key,
