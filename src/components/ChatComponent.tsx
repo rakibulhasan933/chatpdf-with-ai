@@ -10,7 +10,7 @@ type Props = { chatId: number };
 
 export default function ChatComponent({ chatId }: Props) {
 
-	const { input, handleInputChange, handleSubmit, messages } = useChat({
+	const { input, handleInputChange, handleSubmit, messages, isLoading } = useChat({
 		api: "/api/chat",
 	});
 	React.useEffect(() => {
@@ -31,7 +31,7 @@ export default function ChatComponent({ chatId }: Props) {
 			<div className=" inset-x-0 p-2 bg-white h-fit">
 				<h3 className="text-2xl text-center font-bold">Chat</h3>
 			</div>
-			<MessageList messages={messages} />
+			<MessageList messages={messages} isLoading={isLoading} />
 			<form
 				onSubmit={handleSubmit}
 				className=" absolute bottom-0 inset-x-0 px-2 py-4 bg-white"
