@@ -6,10 +6,9 @@ import { Skeleton } from './ui/skeleton';
 
 type Props = {
 	messages: Message[];
-	isLoading: boolean
 };
 
-export default function MessageList({ messages, isLoading }: Props) {
+export default function MessageList({ messages }: Props) {
 
 	return (
 		<ScrollArea className="flex flex-col gap-2 px-4">
