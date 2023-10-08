@@ -37,8 +37,7 @@ export type DrizzleUserSubscriptions = typeof userSubscriptions.$inferSelect;
 
 export const userApiLimit = pgTable("user_api_limit", {
 	id: serial("id").primaryKey(),
-	userId: varchar("user_id", { length: 256 }).notNull().unique(),
-	token: numeric("token").notNull(),
+	userId: varchar("user_id", { length: 245 }),
 });
 
 export type DrizzleUserApiLimit = typeof userApiLimit.$inferSelect;
