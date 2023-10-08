@@ -25,16 +25,16 @@ export default function ChatComponent({ chatId }: Props) {
 
 	return (
 		<div
-			className="relative max-h-screen overflow-x-hidden overflow-scroll"
+			className="relative min-h-screen overflow-x-hidden overflow-scroll "
 			id="message-container"
 		>
-			<div className="sticky top-0 inset-x-0 p-2 bg-white h-fit">
-				<h3 className="text-xl font-bold">Chat</h3>
+			<div className=" inset-x-0 p-2 bg-white h-fit">
+				<h3 className="text-2xl text-center font-bold">Chat</h3>
 			</div>
 			<MessageList messages={messages} />
 			<form
 				onSubmit={handleSubmit}
-				className="sticky bottom-0 inset-x-0 px-2 py-4 bg-white"
+				className=" absolute bottom-0 inset-x-0 px-2 py-4 bg-white"
 			>
 				<div className="flex">
 					<Input
