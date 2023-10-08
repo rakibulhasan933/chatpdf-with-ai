@@ -47,10 +47,16 @@ const ChatSideBar = ({ chats, chatId, limit, isPro }: Props) => {
 					</Link>
 				))}
 			</ScrollArea>
-			<div className="absolute  bottom-4 left-16 py-3 px-2  justify-center  bg-purple-400 rounded">
+			<div className="absolute  bottom-4 left-6 py-3 px-2  justify-center  bg-purple-400 rounded">
 				<div className="w-full px-4">
-					<Progress className="mb-1 bg-white" value={(limit / fullLimit) * 100} />
-					<p className=" text-sm font-medium mb-2 text-black">{limit}/{fullLimit} Free Generations</p>
+					{isPro ? (
+						<h2 className="text-lg font-semibold text-center mb-2 text-black">Unlimited</h2>
+					) : (
+						<>
+							<Progress className="mb-1 bg-white" value={(limit / fullLimit) * 100} />
+							<p className=" text-sm font-medium mb-2 text-black">{limit}/{fullLimit} Free Generations</p>
+						</>
+					)}
 					<SubscriptionButton isPro={isPro} />
 				</div>
 			</div>
