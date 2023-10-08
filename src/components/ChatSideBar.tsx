@@ -3,10 +3,11 @@ import { DrizzleChat } from "@/lib/db/schema";
 import Link from "next/link";
 import React from "react";
 import { Button, buttonVariants } from "./ui/button";
-import { MessageCircle, PlusCircle } from "lucide-react";
+import { MessageCircle, PlusCircle, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import axios from "axios";
 import { Card, CardContent } from "./ui/card";
+import { Progress } from "./ui/progress";
 
 type Props = {
 	chats: DrizzleChat[];
@@ -45,16 +46,18 @@ const ChatSideBar = ({ chats, chatId, limit }: Props) => {
 					</Link>
 				))}
 			</div>
-			<div className="absolute bottom-0 left-0 p-4">
-				<Card className="bg-white/10 border-0">
-					<CardContent className="py-6">
-						<div className="text-center text-sm text-white mb-4 space-y-2">
-							<p>{limit}/{fullLimit}Free Generations</p>
-						</div>
-					</CardContent>
-				</Card>
+			<div className="absolute  bottom-4 left-16 py-3 px-2  justify-center  bg-purple-400 rounded-lg">
+				<div className="w-full px-4">
+					<Progress className="mb-2" value={(limit / fullLimit) * 100} />
+					<p className=" text-sm font-medium mb-2 text-black">{limit}/{fullLimit} Free Generations</p>
 
-				<Link href='/' className={buttonVariants({ variant: "outline" })}>Click here</Link>
+					<Link href='/'>
+						<Button className=" bg-slate-500" variant="outline">
+							Upgrade
+							<Zap className="w-4 h-4 ml-2 fill-white" />
+						</Button>
+					</Link>
+				</div>
 			</div>
 		</div>
 	);
