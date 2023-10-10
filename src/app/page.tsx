@@ -29,20 +29,7 @@ export default async function Home() {
             <h1 className="mr-3 text-5xl font-semibold">Chat with any PDF</h1>
             <UserButton afterSignOutUrl="/" />
           </div>
-          <div className="flex mt-2">
-            {isAuth && firstChat && (
-              <>
-                <Link href={`/chat/${firstChat.id}`}>
-                  <Button>
-                    Go to Chats <ArrowRight className="ml-2" />
-                  </Button>
-                </Link>
-                <div className="ml-3">
-                  <SubscriptionButton isPro={isPro} />
-                </div>
-              </>
-            )}
-          </div>
+
           <div>
             <p className="max-w-xl mt-1 text-lg text-slate-600">
               Join millions of students, researchers and professinals to instantly
