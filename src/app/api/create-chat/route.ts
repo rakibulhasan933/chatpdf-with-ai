@@ -19,15 +19,7 @@ export async function POST(request: NextRequest, response: NextResponse) {
 
 			return NextResponse.json({ message: "Free trail End" }, { status: 429 });
 		}
-		await loadIntoPinecone({ file_url });
-		const chat_id = await db.insert(chats).values({
-			fileKey: file_key,
-			pdfName: file_name,
-			pdfUrl: file_url,
-			userId,
-		}).returning({
-			insertedId: chats.id,
-		});
+
 		return NextResponse.json(
 			{
 				chat_id: chat_id[0].insertedId,
