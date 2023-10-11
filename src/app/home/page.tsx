@@ -2,7 +2,7 @@ import React from 'react'
 
 function Home() {
 	return (
-		<div>Home Page in landding</div>
+		<div>Home Page</div>
 	)
 }
 
