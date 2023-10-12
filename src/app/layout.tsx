@@ -1,6 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google';
+import { Ubuntu } from 'next/font/google';
 import { ClerkProvider } from '@clerk/nextjs';
 import { Toaster } from "react-hot-toast";
 import TanStackProvider from '@/components/Provider';
@@ -8,7 +8,9 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from './api/uploadthing/core';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Ubuntu({
+  subsets: ['latin'], weight: ["300", "400", "500", "700"], style: ["normal", "italic"]
+})
 
 export const metadata: Metadata = {
   title: 'ChatPdf SaaS Platform',
