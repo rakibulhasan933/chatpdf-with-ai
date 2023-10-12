@@ -53,6 +53,7 @@
     "eslint": "latest",
     "eslint-config-next": "latest",
     "postcss": "latest",
+    "react-icons": "^4.11.0",
     "tailwindcss": "latest",
     "typescript": "latest"
   }
