@@ -1,3 +1,4 @@
+import Benefit from '@/components/Benefit'
 import { ArrowLeft, ArrowRightCircle, ArrowRightFromLine, ArrowRightIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -20,6 +21,7 @@ function Home() {
 					<Image src='/chatpdf.png' className=' object-cover mt-4 rounded-md' width={650} height={650} alt='file' />
 					<Link href={'/'} className='flex flex-row items-center mt-4 bg-white font-bold text-xl p-4 rounded hover:bg-green-400 hover:text-white'>Read Your PDF <ArrowRightCircle className='w-10 ml-2' /> </Link>
 				</div>
+				<Benefit />
 			</div>
 		</div>
 	)
