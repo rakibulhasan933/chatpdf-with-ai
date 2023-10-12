@@ -1,5 +1,5 @@
 import Benefit from '@/components/Benefit'
-import { ArrowLeft, ArrowRightCircle, ArrowRightFromLine, ArrowRightIcon } from 'lucide-react'
+import { ArrowRightCircle, ArrowRightIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
