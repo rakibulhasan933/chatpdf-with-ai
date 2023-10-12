@@ -1,4 +1,5 @@
 import Benefit from '@/components/Benefit'
+import FAQ from '@/components/FAQ'
 import { ArrowRightCircle, ArrowRightIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -22,6 +23,7 @@ function Home() {
 					<Link href={'/'} className='flex flex-row items-center mt-4 bg-white font-bold text-xl p-4 rounded hover:bg-green-400 hover:text-white'>Read Your PDF <ArrowRightCircle className='w-10 ml-2' /> </Link>
 				</div>
 				<Benefit />
+				<FAQ />
 			</div>
 		</div>
 	)
