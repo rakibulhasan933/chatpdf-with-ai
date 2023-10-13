@@ -45,8 +45,8 @@ const data: DataIProps[] = [{
 
 export default function FAQ() {
 	return (
-		<div className='my-20'>
-			<h2 className="text-center text-4xl font-bold text-orange-500">FAQ</h2>
+		<div className='my-20 bg-gray-100 rounded-lg'>
+			<h2 className="text-center text-4xl py-16 font-bold text-orange-500">Frequently Asked Questions</h2>
 			<div className="flex flex-col justify-center px-40 gap-y-4">
 				{
 					data.map((item) => (
