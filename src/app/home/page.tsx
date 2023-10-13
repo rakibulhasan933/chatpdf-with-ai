@@ -1,4 +1,5 @@
 import Benefit from '@/components/Benefit'
+import Contact from '@/components/Contact'
 import FAQ from '@/components/FAQ'
 import Pricing from '@/components/Pricing'
 import StatsPage from '@/components/Stats'
@@ -33,6 +34,7 @@ function Home() {
 				<FAQ />
 				<Pricing />
 				<StatsPage />
+				<Contact />
 			</div>
 		</div>
 	)
