@@ -36,6 +36,9 @@ function Home() {
 				<StatsPage />
 				<Contact />
 			</div>
+			<div className="mx-auto mb-4">
+				<h2 className='text-center text-lg font-semibold'>© 2023 ChatPDF, Inc. All rights reserved.</h2>
+			</div>
 		</div>
 	)
 }
