@@ -1,6 +1,7 @@
 import Benefit from '@/components/Benefit'
 import FAQ from '@/components/FAQ'
 import Pricing from '@/components/Pricing'
+import StatsPage from '@/components/Stats'
 import { ArrowRightCircle, ArrowRightIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -9,7 +10,7 @@ import React from 'react'
 function Home() {
 	return (
 		<div>
-			<div className='bg-gradient-to-bl from-green-100 via-blue-300 to-purple-300 min-h-screen'>
+			<div className='min-h-screen bg-gray-300'>
 				<div className="lg:mx-6 mx-2 py-2">
 					<div className="flex flex-row justify-between py-2">
 						<div className="">
@@ -31,6 +32,7 @@ function Home() {
 			<div className="lg:mx-6 mx-2 py-2">
 				<FAQ />
 				<Pricing />
+				<StatsPage />
 			</div>
 		</div>
 	)
