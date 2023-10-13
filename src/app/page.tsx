@@ -1,55 +1,45 @@
-import FileUpload from '@/components/FileUpload'
-import SubscriptionButton from '@/components/SubscriptionButton'
-import { Button } from '@/components/ui/button'
-import { db } from '@/lib/db'
-import { chats } from '@/lib/db/schema'
-import { checkSubscription } from '@/lib/subscripton'
-import { UserButton, auth } from '@clerk/nextjs/app-beta'
-import { eq } from 'drizzle-orm'
-import { ArrowRight, LogIn, BadgeSwissFranc } from 'lucide-react'
+import Benefit from '@/components/Benefit'
+import Contact from '@/components/Contact'
+import FAQ from '@/components/FAQ'
+import Pricing from '@/components/Pricing'
+import StatsPage from '@/components/Stats'
+import { ArrowRightCircle, ArrowRightIcon } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
+import React from 'react'
 
-export default async function Home() {
-  // Pro Checked
-  const { userId } = await auth();
-  const isAuth = !!userId;
-  const isPro = await checkSubscription();
-  let firstChat;
-  if (userId) {
-    firstChat = await db.select().from(chats).where(eq(chats.userId, userId));
-    if (firstChat) {
-      firstChat = firstChat[0];
-    };
-  };
+function Home() {
   return (
-    <main className="w-screen min-h-screen bg-gradient-to-r from-rose-100 to-teal-100">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-        <div className="flex flex-col items-center text-center">
-          <div className="flex items-center">
-            <h1 className="mr-3 text-5xl font-semibold">Chat with any PDF</h1>
-            <UserButton afterSignOutUrl="/" />
+    <div>
+      <div className='min-h-screen bg-gray-300'>
+        <div className="lg:mx-6 mx-2 py-2">
+          <div className="flex flex-row justify-between py-2">
+            <div className="">
+              <Link href='/' className=' font-bold text-2xl'>ChatPDF</Link>
+            </div>
+            <div className="">
+            </div>
           </div>
-
-          <div>
-            <p className="max-w-xl mt-1 text-lg text-slate-600">
-              Join millions of students, researchers and professinals to instantly
-              anwer questions and understand research with AI
-            </p>
+          <div className=" mt-16 px-10 flex justify-center flex-col items-center">
+            <h2 className='text-5xl font-bold text-center'>Chat with any PDF</h2>
+            <h2 className='text-2xl my-5 font-light text-center'>Join millions of students, researchers and professionals to instantly answer questions and understand research with AI</h2>
+            <Image src='/chatpdf.png' className=' object-cover mt-4 rounded-md' width={650} height={650} alt='file' />
+            <Link href="/chat" className='flex flex-row items-center mt-4 bg-white font-bold text-xl p-4 rounded hover:bg-green-400 hover:text-white'>Read Your PDF <ArrowRightCircle className='w-10 ml-2' /> </Link>
           </div>
-          <div className="w-full mt-4">
-            {isAuth ? (
-              <FileUpload />
-            ) : (
-              <Link href="/sign-in">
-                <Button>
-                  Login to get Started!
-                  <LogIn className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-            )}
-          </div>
+          <Benefit />
         </div>
       </div>
-    </main>
+      <div className="lg:mx-6 mx-2 py-2">
+        <FAQ />
+        <Pricing />
+        <StatsPage />
+        <Contact />
+      </div>
+      <div className="mx-auto mb-4">
+        <h2 className='text-center text-lg font-semibold'>© 2023 ChatPDF, Inc. All rights reserved.</h2>
+      </div>
+    </div>
   )
 }
+
+export default Home
