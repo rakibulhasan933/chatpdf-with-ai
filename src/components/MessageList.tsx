@@ -1,8 +1,6 @@
 import React from 'react'
 import { Message } from "ai/react";
 import { cn } from '@/lib/utils';
-import { ScrollArea } from './ui/scroll-area';
-import { Skeleton } from './ui/skeleton';
 
 type Props = {
 	messages: Message[];
@@ -11,7 +9,7 @@ type Props = {
 export default function MessageList({ messages }: Props) {
 
 	return (
-		<ScrollArea className="flex flex-col gap-2 px-4">
+		<div className="flex flex-col gap-2 px-4">
 			{messages.map((message) => {
 				return (
 					<div
@@ -34,6 +32,6 @@ export default function MessageList({ messages }: Props) {
 					</div>
 				);
 			})}
-		</ScrollArea>
+		</div>
 	)
 };
