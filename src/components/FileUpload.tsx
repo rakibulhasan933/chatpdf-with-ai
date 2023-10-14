@@ -30,9 +30,9 @@ export default function FileUpload() {
 				<div>
 					{isLoading || Loading ?
 						(
-							<div>
+							<div className='flex items-center justify-center'>
 								<Loader2 className="h-10 w-10 text-blue-500 animate-spin" />
-								<p className="mt-2 text-sm text-slate-400">
+								<p className="ml-2 text-lg font-medium text-slate-400">
 									Spilling Tea to GPT...
 								</p>
 							</div>
