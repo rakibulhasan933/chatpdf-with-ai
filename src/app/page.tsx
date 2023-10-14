@@ -13,13 +13,6 @@ function Home() {
     <div>
       <div className='min-h-screen bg-gray-300'>
         <div className="lg:mx-6 mx-2 py-2">
-          <div className="flex flex-row justify-between py-2">
-            <div className="">
-              <Link href='/' className=' font-bold text-2xl'>ChatPDF</Link>
-            </div>
-            <div className="">
-            </div>
-          </div>
           <div className=" mt-16 px-10 flex justify-center flex-col items-center">
             <h2 className='text-5xl font-bold text-center'>Chat with any PDF</h2>
             <h2 className='text-2xl my-5 font-light text-center'>Join millions of students, researchers and professionals to instantly answer questions and understand research with AI</h2>
