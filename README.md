@@ -1,6 +1,8 @@
-## A large language model (LLM) is a specialized type of artificial intelligence (AI) that has been trained on vast amounts of text to understand existing content and generate original content
+## Introduction LLM is a large language model.
 
-This is a [ChatPDF](https://smartchatpdf.vercel.app/) project With OpenAI.
+A large language model (LLM) is a specialized type of artificial intelligence (AI) that has been trained on vast amounts of text to understand existing content and generate original content
+
+## Live Site [ChatPDF](https://smartchatpdf.vercel.app/)
 
 ## ChatPDF Architectures
 
