@@ -8,4 +8,4 @@ A large language model (LLM) is a specialized type of artificial intelligence (A
 
 [![Architectures](https://miro.medium.com/v2/resize:fit:923/1*CJzoMxqFrxrDv2UpZt23ZQ.png)](https://miro.medium.com/v2/resize:fit:923/1*CJzoMxqFrxrDv2UpZt23ZQ.png)
 
-## coming  soon
+## coming  soon 2024
